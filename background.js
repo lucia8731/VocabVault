@@ -1,6 +1,3 @@
-/* 拡張機能がインストールされた際に、
-ユーザーがテキストを選択したときに表示される
-コンテキストメニュー項目を作成する処理を定義*/
 chrome.runtime.onInstalled.addListener(() =>{
     chrome.contextMenus.create({
         id: "VocabVault",
@@ -9,7 +6,6 @@ chrome.runtime.onInstalled.addListener(() =>{
     });
 });
 
-/*コンテキストメニューの項目がクリックされたときに実行される処理を定義*/
 chrome.contextMenus.onClicked.addListener((info, tab) => {
     if (info.menuItemId === "vocabVault") {
       chrome.scripting.executeScript({
@@ -28,7 +24,6 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
 });
 
 
-/*選択されたテキストを取得*/
 function getSelectionText() {
     return window.getSelection().toString();
 }
